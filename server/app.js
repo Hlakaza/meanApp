@@ -2,7 +2,7 @@ let express    = require('express');
     cors       = require('cors');
     bodyParser = require('body-parser');
     mongoose   = require('mongoose');
-    User       = require('./models/user');
+    User       = require('./models/user.js');
     
     app        = express();
 
@@ -14,13 +14,7 @@ let posts = [
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27000/mean_store',  err => {
-    if(err){
-        console.log(err);
-    } else {
-        console.log('Connected to mongo')
-    }
-});
+
 
 app.get('/posts', (req, res) => {
     res.send(posts);
@@ -37,6 +31,14 @@ app.post('/register', (req, res) => {
    })
 });
 
+mongoose.Promise = global.Promise;  // gets rid of the mongoose promise deprecated warning
+mongoose.connect('mongodb://localhost:27017/meanstore', err => {
+    if (err) {
+        console.log(err);
+      } else {
+        console.log('Mongo is connected...');
+      }
+});
 app.listen(3000);
 
 

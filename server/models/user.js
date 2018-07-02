@@ -2,7 +2,7 @@ let mongoose = require('mongoose');
 
 
 
-module.exports = mongoose.model('User', res => {
-    email: String;
+module.exports = mongoose.model('User',{
+    email: String,
     password: String
-})
+});
