@@ -7,8 +7,8 @@ let express    = require('express');
     app        = express();
 
 let posts = [
-   {message: 'The world is a great place to be in'},
-   {message: 'Love to be  loved and hate to be hated'}
+   { message: 'The world is a great place to be in' },
+   { message: 'Love to be  loved and hate to be hated' }
 ]
 
 app.use(cors());
@@ -23,12 +23,13 @@ app.get('/posts', (req, res) => {
 app.post('/register', (req, res) => {
    let userData = req.body;
    const user = new User(userData);
-   user.save((res, err) => {
+   user.save((err, res) => {
        if(err){
            console.log(err);
        }
-       res.sendStatus(200)
-   })
+    })
+    console.log(userData.email, 'registered')
+    res.sendStatus(200)
 });
 
 mongoose.Promise = global.Promise;  // gets rid of the mongoose promise deprecated warning

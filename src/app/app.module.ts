@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { MatButtonModule, MatCardModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatToolbarModule } from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 import { ApiService } from './services/api.service';
@@ -20,7 +20,8 @@ import { MessagesComponent } from './components/messages/messages.component';
     HttpModule,
     MatButtonModule,
     NoopAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
