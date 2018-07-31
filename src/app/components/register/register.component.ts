@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-register',
@@ -6,13 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  constructor() { }
-  Register = {};
+  registerData = {};
+  constructor( private apiService: ApiService) { }
   ngOnInit() {
   }
 
+  /**
+   * Post registration data to register the user.
+   * Get aa result (res) or an error (err) on success or failer
+   */
   register() {
-    console.log('obj', this.Register);
+    this.apiService.registerUser(this.registerData)
+    .subscribe(res => {
+      console.log('Success', res);
+    }, err => {
+      console.log(err);
+    });
   }
 
 }
